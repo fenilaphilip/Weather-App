@@ -15,11 +15,14 @@ export default function Search() {
   }
   function weather_in_searched_city(response) {
     console.log(response);
+    let wtimg = response.data.weather[0].icon;
     setWeatherDetails({
-      temperature: response.data.main.temp,
+      temperature: Math.round(response.data.main.temp),
       humidity: response.data.main.humidity,
       pressure: response.data.main.pressure,
       description: response.data.weather[0].description,
+      wind: response.data.wind.speed,
+      icon: `http://openweathermap.org/img/wn/${wtimg}@2x.png`,
     });
   }
 
@@ -33,7 +36,7 @@ export default function Search() {
         <input type="search" placeholder="Enter a city" onChange={updateCity} />{" "}
         <button>Search</button>
       </form>
-      <Weather details={weatherDetails} />
+      <Weather city={city} details={weatherDetails} />
     </div>
   );
 }
