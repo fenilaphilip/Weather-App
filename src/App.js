@@ -7,6 +7,12 @@ export default function App() {
     <div className="app">
       <h1>Weather App</h1>
       <Search />
+      <p>
+        <a href="https://github.com/fenilaphilip/Weather-App.git">
+          Open-source code
+        </a>
+        , by Fenila Philip
+      </p>
     </div>
   );
 }

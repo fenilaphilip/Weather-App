@@ -5,6 +5,7 @@
   border-color: black;
   margin: 10px 150px;
   padding: 20px;
+  height: 500px;
 }
 .weather-details {
   text-align: left;
