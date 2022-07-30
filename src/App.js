@@ -1,18 +1,17 @@
 import "./App.css";
 import React from "react";
-import Search from "./search";
+import Header from "./header.js";
+import Currentweather from "./mainReport";
+import Footer from "./footer";
 
 export default function App() {
   return (
-    <div className="app">
-      <h1>Weather App</h1>
-      <Search />
-      <p>
-        <a href="https://github.com/fenilaphilip/Weather-App.git">
-          Open-source code
-        </a>
-        , by Fenila Philip
-      </p>
+    <div className="screen">
+      <div className="app container">
+        <Header />
+        <Currentweather />
+        <Footer />
+      </div>
     </div>
   );
 }

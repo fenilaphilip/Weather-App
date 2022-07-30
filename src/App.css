@@ -1,12 +1,12 @@
-.app {
-  text-align: center;
-  background-color: rgb(196, 255, 242);
-  border: 2px solid;
-  border-color: black;
-  margin: 10px 150px;
-  padding: 20px;
-  height: 500px;
+.screen {
+  font-family: Cerebri Sans, Helvetica, Arial, sans-serif;
+  background-color: rgba(66, 65, 73, 0.514);
 }
-.weather-details {
-  text-align: left;
+.app {
+  background: radial-gradient(
+    circle at 0.8% 1%,
+    rgba(167, 204, 192, 0.781) 40%,
+    rgba(167, 233, 148, 0.589) 60.2%,
+    rgba(204, 83, 139, 0.226) 100.2%
+  );
 }
