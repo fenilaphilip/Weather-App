@@ -11,7 +11,7 @@ export default function Currentweather() {
 
               <div className="row m-4">
                 <div className="col pt-2" id="tempNow">
-                  <h1>22°C</h1>
+                  <h1>22</h1>
                 </div>
 
                 <div className="col-6">
@@ -61,7 +61,10 @@ export default function Currentweather() {
                 </div>
               </div>
               <div className="row m-4">
-                <div className="card-body overflow-auto" id="more-details">
+                <div
+                  className="card-body overflow-auto text-center"
+                  id="more-details"
+                >
                   <div className="row">
                     <div className="col-sm-2">
                       <h6 className="wtdetail">Humidity</h6>

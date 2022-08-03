@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Weather from "./weather";
+import "./search.css";
+import locationIcon from "./location.png";
 
 export default function Search() {
   const [city, setCity] = useState("");
@@ -32,11 +33,18 @@ export default function Search() {
   }
   return (
     <div className="search-engine">
-      <form onSubmit={searchCity}>
-        <input type="search" placeholder="Enter a city" onChange={updateCity} />{" "}
-        <button>Search</button>
+      <form className="d-flex" onSubmit={searchCity}>
+        <button class="btn btn-outline-success me-2" title="Current location">
+          <img src={locationIcon} alt="location" id="location-img-btn" />
+        </button>
+        <input
+          className="form-control me-2"
+          type="search"
+          placeholder="Enter a city"
+          onChange={updateCity}
+        />
+        <button className="btn btn-outline-success">Search</button>
       </form>
-      <Weather city={city} details={weatherDetails} />
     </div>
   );
 }
