@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./search.css";
-import locationIcon from "./location.png";
+import locationIcon from "./images/location.png";
 
 export default function Search() {
   const [city, setCity] = useState("");
-  const [weatherDetails, setWeatherDetails] = useState(null);
 
   function searchCity(event) {
     event.preventDefault();
@@ -15,9 +14,10 @@ export default function Search() {
     axios.get(api_url).then(weather_in_searched_city);
   }
   function weather_in_searched_city(response) {
+    let weatherDetails;
     console.log(response);
     let wtimg = response.data.weather[0].icon;
-    setWeatherDetails({
+    return (weatherDetails = {
       temperature: Math.round(response.data.main.temp),
       humidity: response.data.main.humidity,
       pressure: response.data.main.pressure,

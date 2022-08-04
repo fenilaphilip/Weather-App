@@ -1,17 +1,19 @@
 import React from "react";
 import "./mainReport.css";
+import weatherDetails from "./search.js";
+
 export default function Currentweather() {
   return (
-    <div className="mainReport">
-      <div className="row">
+    <div>
+      <div className="row ">
         <div className="col">
-          <div className="card">
+          <div className="card mainReport">
             <div className="card-body">
               <h1 className="card-title location pt-2 text-center">Berlin</h1>
 
               <div className="row m-4">
                 <div className="col pt-2" id="tempNow">
-                  <h1>22</h1>
+                  <h1>{weatherDetails.temperature}</h1>
                 </div>
 
                 <div className="col-6">

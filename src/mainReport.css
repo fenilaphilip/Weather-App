@@ -1,18 +1,10 @@
 .mainReport {
   width: 100%;
-  background-image: url("sky3.jpg");
+  background-image: url("images/sky3.jpg");
   background-size: cover;
   background-position: center bottom;
 }
 
-.card {
-  background: radial-gradient(
-    circle at 0.8% 1%,
-    rgba(156, 194, 165, 0.404) 40%,
-    rgba(159, 149, 177, 0.295) 60.2%,
-    rgba(219, 212, 203, 0.616) 100.2%
-  );
-}
 h1 {
   font-size: 40px;
   line-height: 48px;
