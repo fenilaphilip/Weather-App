@@ -1,8 +1,8 @@
 import React from "react";
 import "./mainReport.css";
-import weatherDetails from "./search.js";
 
-export default function Currentweather() {
+export default function Currentweather(properties) {
+  let weatherDetails = properties.currentWeatherDetails;
   return (
     <div>
       <div className="row ">

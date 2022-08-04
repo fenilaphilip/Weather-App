@@ -3,9 +3,9 @@ import axios from "axios";
 import "./search.css";
 import locationIcon from "./images/location.png";
 
-export default function Search() {
+export default function Search(properties) {
   const [city, setCity] = useState("");
-
+  let updateWeatherDetails = properties.updateWeatherDetails;
   function searchCity(event) {
     event.preventDefault();
     const unit = "Metric";
@@ -14,10 +14,9 @@ export default function Search() {
     axios.get(api_url).then(weather_in_searched_city);
   }
   function weather_in_searched_city(response) {
-    let weatherDetails;
     console.log(response);
     let wtimg = response.data.weather[0].icon;
-    return (weatherDetails = {
+    updateWeatherDetails({
       temperature: Math.round(response.data.main.temp),
       humidity: response.data.main.humidity,
       pressure: response.data.main.pressure,
