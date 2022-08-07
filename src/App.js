@@ -2,6 +2,8 @@ import "./App.css";
 import React, { useState } from "react";
 import Header from "./header.js";
 import Currentweather from "./mainReport";
+import Hourlyforecast from "./hourlyForecast";
+import Oneweekforecast from "./oneWeekForecast";
 import Footer from "./footer";
 
 export default function App() {
@@ -25,6 +27,8 @@ export default function App() {
       <div className="app container">
         <Header updateWeatherDetails={setWeatherDetails} />
         <Currentweather currentWeatherDetails={weatherDetails} />
+        <Hourlyforecast />
+        <Oneweekforecast />
         <Footer />
       </div>
     </div>
