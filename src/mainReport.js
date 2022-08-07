@@ -1,4 +1,5 @@
 import React from "react";
+import FormattedDate from "./date";
 import "./mainReport.css";
 
 export default function Currentweather(properties) {
@@ -79,11 +80,11 @@ export default function Currentweather(properties) {
                   <div className="row">
                     <div className="col-sm-2">
                       <h6 className="wtdetail">Humidity</h6>
-                      <p className="wtmeasure">{weatherDetails.humidity}%</p>
+                      <p className="wtmeasure">{weatherDetails.humidity} %</p>
                     </div>
                     <div className="col-sm-3">
                       <h6 className="wtdetail">wind</h6>
-                      <p className="wtmeasure">{weatherDetails.wind}km/h</p>
+                      <p className="wtmeasure">{weatherDetails.wind} km/h</p>
                     </div>
                     <div className="col-sm-2">
                       <h6 className="wtdetail">Air Pressure</h6>
@@ -91,11 +92,17 @@ export default function Currentweather(properties) {
                     </div>
                     <div className="col-sm-3">
                       <h6 className="wtdetail">Sunrise</h6>
-                      <p className="wtmeasure">5:22</p>
+                      <p className="wtmeasure">
+                        {new Date().getHours(weatherDetails.sun_rise)}:
+                        {new Date().getMinutes(weatherDetails.sun_rise)}
+                      </p>
                     </div>
                     <div className="col-sm-2">
                       <h6 className="wtdetail">Sunset</h6>
-                      <p className="wtmeasure">21:2</p>
+                      <p className="wtmeasure">
+                        {new Date().getHours(weatherDetails.sun_set)}:
+                        {new Date().getMinutes(weatherDetails.sun_set)}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -103,7 +110,9 @@ export default function Currentweather(properties) {
 
               <div className="row pt-2">
                 <small>Last updated</small>
-                <p className="day">Saturday 30th July 07:36 PM</p>
+                <p className="day">
+                  <FormattedDate date={weatherDetails.date} />
+                </p>
               </div>
             </div>
           </div>
