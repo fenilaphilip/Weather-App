@@ -9,7 +9,9 @@ export default function Currentweather(properties) {
         <div className="col">
           <div className="card mainReport">
             <div className="card-body">
-              <h1 className="card-title location pt-2 text-center">Berlin</h1>
+              <h1 className="card-title location pt-2 text-center">
+                {weatherDetails.city}
+              </h1>
 
               <div className="row m-4">
                 <div className="col pt-2" id="tempNow">
@@ -54,11 +56,18 @@ export default function Currentweather(properties) {
                   </h5>
                 </div>
                 <div className="col-sm-3">
+                  <img
+                    src={weatherDetails.icon}
+                    alt={weatherDetails.description}
+                  />
                   <div className="wtdetail" id="description">
-                    clear sky
+                    {weatherDetails.description}
                   </div>
                   <div className="wtdetail">
-                    Max / Min :<span className="wtmeasure">26°C / 23°C</span>
+                    Max / Min :
+                    <span className="wtmeasure">
+                      {weatherDetails.temp_max}°C /{weatherDetails.temp_min}°C
+                    </span>
                   </div>
                 </div>
               </div>
@@ -70,15 +79,15 @@ export default function Currentweather(properties) {
                   <div className="row">
                     <div className="col-sm-2">
                       <h6 className="wtdetail">Humidity</h6>
-                      <p className="wtmeasure">41 %</p>
+                      <p className="wtmeasure">{weatherDetails.humidity}%</p>
                     </div>
                     <div className="col-sm-3">
                       <h6 className="wtdetail">wind</h6>
-                      <p className="wtmeasure">3 km/h</p>
+                      <p className="wtmeasure">{weatherDetails.wind}km/h</p>
                     </div>
                     <div className="col-sm-2">
                       <h6 className="wtdetail">Air Pressure</h6>
-                      <p className="wtmeasure">1007 hPa</p>
+                      <p className="wtmeasure">{weatherDetails.pressure} hPa</p>
                     </div>
                     <div className="col-sm-3">
                       <h6 className="wtdetail">Sunrise</h6>

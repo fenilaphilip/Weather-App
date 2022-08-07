@@ -17,12 +17,18 @@ export default function Search(properties) {
     console.log(response);
     let wtimg = response.data.weather[0].icon;
     updateWeatherDetails({
+      city: response.data.name,
+      date: response.data.dt * 1000,
       temperature: Math.round(response.data.main.temp),
+      temp_max: Math.round(response.data.main.temp_max),
+      temp_min: Math.round(response.data.main.temp_min),
       humidity: response.data.main.humidity,
       pressure: response.data.main.pressure,
       description: response.data.weather[0].description,
-      wind: response.data.wind.speed,
+      wind: Math.round(response.data.wind.speed),
       icon: `http://openweathermap.org/img/wn/${wtimg}@2x.png`,
+      sun_rise: response.data.sunrise * 1000,
+      sun_set: response.data.sunset * 1000,
     });
   }
 

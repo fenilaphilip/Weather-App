@@ -6,12 +6,18 @@ import Footer from "./footer";
 
 export default function App() {
   const [weatherDetails, setWeatherDetails] = useState({
-    temperature: 99,
-    humidity: 88,
-    pressure: 77,
-    description: "Hello world",
-    wind: 5.27,
+    city: "London",
+    date: "30 Thursday",
+    temperature: 27,
+    temp_max: 28,
+    temp_min: 18,
+    humidity: 38,
+    pressure: 1058,
+    description: "little rain",
+    wind: 5,
     icon: `http://openweathermap.org/img/wn/10d@2x.png`,
+    sun_rise: "5:30",
+    sun_set: "6:20",
   });
 
   return (
