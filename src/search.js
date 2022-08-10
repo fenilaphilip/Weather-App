@@ -27,8 +27,8 @@ export default function Search(properties) {
       description: response.data.weather[0].description,
       wind: Math.round(response.data.wind.speed),
       icon: `http://openweathermap.org/img/wn/${wtimg}@2x.png`,
-      sun_rise: response.data.sunrise * 1000,
-      sun_set: response.data.sunset * 1000,
+      sun_rise: response.data.sunrise,
+      sun_set: response.data.sys.sunset,
     });
   }
 

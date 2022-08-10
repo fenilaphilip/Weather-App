@@ -3,7 +3,7 @@ import FormattedDate from "./date";
 import "./mainReport.css";
 
 export default function Currentweather(properties) {
-  let now = new Date();
+  const now = new Date();
   let weatherDetails = properties.currentWeatherDetails;
   return (
     <div>
@@ -94,15 +94,15 @@ export default function Currentweather(properties) {
                     <div className="col-sm-3">
                       <h6 className="wtdetail">Sunrise</h6>
                       <p className="wtmeasure">
-                        {now.getHours(weatherDetails.sun_rise)}:
-                        {now.getMinutes(weatherDetails.sun_rise)}
+                        {now.getHours(weatherDetails.sun_rise * 1000)}:
+                        {now.getMinutes(weatherDetails.sun_rise * 1000)}
                       </p>
                     </div>
                     <div className="col-sm-2">
                       <h6 className="wtdetail">Sunset</h6>
                       <p className="wtmeasure">
-                        {now.getHours(weatherDetails.sun_set)}:
-                        {now.getMinutes(weatherDetails.sun_set)}
+                        {now.getHours(weatherDetails.sun_set * 1000)}:
+                        {now.getMinutes(weatherDetails.sun_set * 1000)}
                       </p>
                     </div>
                   </div>
