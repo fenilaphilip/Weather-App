@@ -1,14 +1,16 @@
 import React from "react";
+import "./forecast.css";
+
 export default function Oneweekforecast() {
   return (
-    <div className="col-sm-6 mt-2">
-      <div className="card pt-2">
+    <div className="col-sm-6 mt-2 ">
+      <div className="card pt-2 forecast">
         <h6>
-          <strong className="text-center">One-week weather forecast</strong>
+          <strong>One-week weather forecast</strong>
         </h6>
       </div>
-      <div className="card">
-        <div className="card-body overflow-auto" id="weeklyforecast">
+      <div className="card forecast">
+        <div className="card-body overflow-auto weeklyforecast">
           <ul id="oneWeekForecast"></ul>
         </div>
       </div>

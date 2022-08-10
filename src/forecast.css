@@ -1,0 +1,13 @@
+.forecast {
+  text-align: center;
+  background: radial-gradient(
+    circle at 0.8% 1%,
+    rgba(167, 204, 192, 0.781) 40%,
+    rgba(167, 233, 148, 0.589) 60.2%,
+    rgba(204, 83, 139, 0.226) 100.2%
+  );
+}
+.weeklyforecast,
+.hourlyforecast {
+  height: 400px;
+}
