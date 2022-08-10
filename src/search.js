@@ -27,8 +27,8 @@ export default function Search(properties) {
       description: response.data.weather[0].description,
       wind: Math.round(response.data.wind.speed),
       icon: `http://openweathermap.org/img/wn/${wtimg}@2x.png`,
-      sun_rise: response.data.sunrise,
-      sun_set: response.data.sys.sunset,
+      sun_rise: response.data.sys.sunrise * 1000,
+      sun_set: response.data.sys.sunset * 1000,
     });
   }
 
@@ -39,7 +39,10 @@ export default function Search(properties) {
   return (
     <div className="search-engine">
       <form className="d-flex" onSubmit={searchCity}>
-        <button class="btn btn-outline-success me-2" title="Current location">
+        <button
+          className="btn btn-outline-success me-2"
+          title="Current location"
+        >
           <img src={locationIcon} alt="location" id="location-img-btn" />
         </button>
         <input

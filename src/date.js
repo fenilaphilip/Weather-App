@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function FormattedDate(props) {
-  let now = new Date();
+  let inputDate = new Date(props.date);
   let days = [
     "Sunday",
     "Monday",
@@ -25,9 +25,9 @@ export default function FormattedDate(props) {
     "November",
     "December",
   ];
-  let day = now.getDay(props.Date);
-  let date = now.getDate(props.Date);
-  let month = now.getMonth(props.Date);
+  let day = inputDate.getDay();
+  let date = inputDate.getDate();
+  let month = inputDate.getMonth();
   let ordinal = "";
   if (date === 1 || date === 21 || date === 31) {
     ordinal = "st";
@@ -42,8 +42,8 @@ export default function FormattedDate(props) {
       }
     }
   }
-  let hour = now.getHours(props.Date);
-  let minute = now.getMinutes(props.Date);
+  let hour = inputDate.getHours();
+  let minute = inputDate.getMinutes();
   let time = ``;
   if (minute < 10) {
     minute = `0${minute}`;
@@ -64,10 +64,20 @@ export default function FormattedDate(props) {
       time = `${hourIn12Format}:${minute} AM`;
     }
   }
-  return (
-    <div>
-      {days[day]} {date}
-      {ordinal} {months[month]} {time}
-    </div>
-  );
+  if (props.fulldate) {
+    return (
+      <div>
+        <p>
+          {days[day]} {date}
+          {ordinal} {months[month]} {time}
+        </p>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <p>{time}</p>
+      </div>
+    );
+  }
 }
