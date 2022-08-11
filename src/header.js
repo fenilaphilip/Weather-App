@@ -9,7 +9,10 @@ export default function Header(properties) {
       <nav className="navbar navbar-expand-lg">
         <div className="container">
           <div className="navbar-brand">WEATHER APP</div>
-          <Search updateWeatherDetails={properties.updateWeatherDetails} />
+          <Search
+            updateWeatherDetails={properties.updateWeatherDetails}
+            unit={properties.unit}
+          />
         </div>
       </nav>
     </div>

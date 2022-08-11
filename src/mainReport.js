@@ -4,6 +4,9 @@ import "./mainReport.css";
 
 export default function Currentweather(properties) {
   let weatherDetails = properties.currentWeatherDetails;
+  function useImperial() {
+    properties.changeUnit("imperial");
+  }
   return (
     <div>
       <div className="row ">
@@ -31,7 +34,7 @@ export default function Currentweather(properties) {
                         className="btn-check"
                         name="btnradio"
                         id="btn-celsius"
-                        autocomplete="off"
+                        autoComplete="off"
                         checked
                       />
                       <label
@@ -45,7 +48,8 @@ export default function Currentweather(properties) {
                         className="btn-check"
                         name="btnradio"
                         id="btn-fahrenheit"
-                        autocomplete="off"
+                        autoComplete="off"
+                        onClick={useImperial}
                       />
                       <label
                         className="btn btn-outline-primary"

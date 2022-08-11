@@ -8,7 +8,7 @@ export default function Search(properties) {
   let updateWeatherDetails = properties.updateWeatherDetails;
   function searchCity(event) {
     event.preventDefault();
-    const unit = "Metric";
+    let unit = properties.unit;
     const api_key = "9f60d7631c91fefe3d27ab9b78997410";
     const api_url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${api_key}`;
     axios.get(api_url).then(weather_in_searched_city);

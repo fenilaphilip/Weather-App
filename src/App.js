@@ -7,6 +7,7 @@ import Oneweekforecast from "./oneWeekForecast";
 import Footer from "./footer";
 
 export default function App() {
+  const [unit, setUnit] = useState("metric");
   const [weatherDetails, setWeatherDetails] = useState({
     city: "London",
     date: "30 Thursday",
@@ -25,8 +26,11 @@ export default function App() {
   return (
     <div className="screen">
       <div className="app container">
-        <Header updateWeatherDetails={setWeatherDetails} />
-        <Currentweather currentWeatherDetails={weatherDetails} />
+        <Header updateWeatherDetails={setWeatherDetails} unit={unit} />
+        <Currentweather
+          currentWeatherDetails={weatherDetails}
+          changeUnit={setUnit}
+        />
         <div className="row">
           <Hourlyforecast />
           <Oneweekforecast />
