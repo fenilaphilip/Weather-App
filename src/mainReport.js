@@ -7,6 +7,9 @@ export default function Currentweather(properties) {
   function useImperial() {
     properties.changeUnit("imperial");
   }
+  function useMetric() {
+    properties.changeUnit("metric");
+  }
   return (
     <div>
       <div className="row ">
@@ -36,6 +39,7 @@ export default function Currentweather(properties) {
                         id="btn-celsius"
                         autoComplete="off"
                         checked
+                        onClick={useMetric}
                       />
                       <label
                         className="btn btn-outline-primary"

@@ -4,13 +4,18 @@ import "./search.css";
 import locationIcon from "./images/location.png";
 
 export default function Search(properties) {
+  const api_key = "9f60d7631c91fefe3d27ab9b78997410";
   const [city, setCity] = useState("");
   let updateWeatherDetails = properties.updateWeatherDetails;
-  function searchCity(event) {
+  let unit = properties.unit;
+  const [firstLoad, setFirstLoad] = useState(true);
+
+  function onSearchSubmit(event) {
     event.preventDefault();
-    let unit = properties.unit;
-    const api_key = "9f60d7631c91fefe3d27ab9b78997410";
-    const api_url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${api_key}`;
+    searchCity(city);
+  }
+  function searchCity(currentCity) {
+    const api_url = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&units=${unit}&appid=${api_key}`;
     axios.get(api_url).then(weather_in_searched_city);
   }
   function weather_in_searched_city(response) {
@@ -36,9 +41,13 @@ export default function Search(properties) {
     event.preventDefault();
     setCity(event.target.value);
   }
+  if (firstLoad) {
+    searchCity("London");
+    setFirstLoad(false);
+  }
   return (
     <div className="search-engine">
-      <form className="d-flex" onSubmit={searchCity}>
+      <form className="d-flex" onSubmit={onSearchSubmit}>
         <button
           className="btn btn-outline-success me-2"
           title="Current location"
