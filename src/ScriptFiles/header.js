@@ -1,39 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import axios from "axios";
+import WeatherClient from "./Api.js";
 import locationIcon from "../images/location.png";
 
 export default function Header(properties) {
-  const api_key = "9f60d7631c91fefe3d27ab9b78997410";
   const [city, setCity] = useState("");
   let updateWeatherDetails = properties.updateWeatherDetails;
   let unit = properties.unit;
 
   function onSearchSubmit(event) {
     event.preventDefault();
-    searchCity(city);
-  }
-  function searchCity(currentCity) {
-    const api_url = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&units=${unit}&appid=${api_key}`;
-    axios.get(api_url).then(weather_in_searched_city);
-  }
-  function weather_in_searched_city(response) {
-    console.log(response);
-    let wtimg = response.data.weather[0].icon;
-    updateWeatherDetails({
-      city: response.data.name,
-      date: response.data.dt * 1000,
-      temperature: Math.round(response.data.main.temp),
-      temp_max: Math.round(response.data.main.temp_max),
-      temp_min: Math.round(response.data.main.temp_min),
-      humidity: response.data.main.humidity,
-      pressure: response.data.main.pressure,
-      description: response.data.weather[0].description,
-      wind: Math.round(response.data.wind.speed),
-      icon: `http://openweathermap.org/img/wn/${wtimg}@2x.png`,
-      sun_rise: response.data.sys.sunrise * 1000,
-      sun_set: response.data.sys.sunset * 1000,
-    });
+    WeatherClient.getCurrentWeather(city, unit, updateWeatherDetails);
   }
 
   function updateCity(event) {
@@ -41,7 +18,7 @@ export default function Header(properties) {
     setCity(event.target.value);
   }
   useEffect(() => {
-    searchCity("London");
+    WeatherClient.getCurrentWeather("London", unit, updateWeatherDetails);
   }, []);
 
   return (
