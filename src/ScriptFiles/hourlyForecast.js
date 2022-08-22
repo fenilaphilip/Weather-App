@@ -1,5 +1,5 @@
 import React from "react";
-import "./forecast.css";
+
 export default function Hourlyforecast() {
   return (
     <div className="col-sm-6 mt-2">

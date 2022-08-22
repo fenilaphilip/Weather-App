@@ -1,6 +1,5 @@
 import React from "react";
 import FormattedDate from "./date";
-import "./mainReport.css";
 
 export default function Currentweather(properties) {
   let weatherDetails = properties.currentWeatherDetails;

@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
-import "./search.css";
-import locationIcon from "./images/location.png";
+import locationIcon from "../images/location.png";
 
-export default function Search(properties) {
+export default function Header(properties) {
   const api_key = "9f60d7631c91fefe3d27ab9b78997410";
   const [city, setCity] = useState("");
   let updateWeatherDetails = properties.updateWeatherDetails;
   let unit = properties.unit;
-  const [firstLoad, setFirstLoad] = useState(true);
 
   function onSearchSubmit(event) {
     event.preventDefault();
@@ -41,27 +40,34 @@ export default function Search(properties) {
     event.preventDefault();
     setCity(event.target.value);
   }
-  if (firstLoad) {
+  useEffect(() => {
     searchCity("London");
-    setFirstLoad(false);
-  }
+  }, []);
+
   return (
-    <div className="search-engine">
-      <form className="d-flex" onSubmit={onSearchSubmit}>
-        <button
-          className="btn btn-outline-success me-2"
-          title="Current location"
-        >
-          <img src={locationIcon} alt="location" id="location-img-btn" />
-        </button>
-        <input
-          className="form-control me-2"
-          type="search"
-          placeholder="Enter a city"
-          onChange={updateCity}
-        />
-        <button className="btn btn-outline-success">Search</button>
-      </form>
+    <div>
+      <nav className="navbar navbar-expand-lg">
+        <div className="container">
+          <div className="navbar-brand">WEATHER APP</div>
+          <div className="search-engine">
+            <form className="d-flex" onSubmit={onSearchSubmit}>
+              <button
+                className="btn btn-outline-success me-2"
+                title="Current location"
+              >
+                <img src={locationIcon} alt="location" id="location-img-btn" />
+              </button>
+              <input
+                className="form-control me-2"
+                type="search"
+                placeholder="Enter a city"
+                onChange={updateCity}
+              />
+              <button className="btn btn-outline-success">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import React from "react";
-import "./forecast.css";
 
 export default function Oneweekforecast() {
   return (
