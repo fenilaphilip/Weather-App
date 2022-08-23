@@ -1,5 +1,5 @@
 import "../StyleFiles/App.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import WeatherClient from "./WeatherClient.js";
 import Header from "./Header.js";
 import Currentweather from "./CurrentWeather.js";
@@ -8,29 +8,30 @@ import Weeklyforecast from "./WeeklyForecast.js";
 import Footer from "./Footer.js";
 
 export default function App() {
-  WeatherClient.getCurrentWeather("kerala", "metric", (details) => {
-    console.log(details);
-  });
-  WeatherClient.getForecastWeather(52.517533, 13.386401, "metric");
+  const [city, setCity] = useState("London");
+  const [unit, setUnit] = useState("metric");
+  const [currentDetails, setCurrentDetails] = useState(null);
+
+  useEffect(() => {
+    WeatherClient.getCurrentWeather(city, unit, (details) => {
+      console.log(details);
+      setCurrentDetails(details);
+    });
+  }, [city, unit]);
+
+  // WeatherClient.getForecastWeather(
+  //   52.517533,
+  //   13.386401,
+  //   "metric",
+  //   (forecast) => {
+  //     console.log(forecast);
+  //   }
+  // );
   return (
-    <p>Hello</p>
-
-    // <div className="screen">
-    //   <div className="app container">
-    //     <Header updateWeatherDetails={setWeatherDetails} unit={unit} />
-    //     {weatherDetails != null && (
-    //       <Currentweather
-    //         currentWeatherDetails={weatherDetails}
-    //         changeUnit={setUnit}
-
-    //       />
-    //     )}
-    //     <div className="row">
-    //       <Hourlyforecast />
-    //       <Weeklyforecast />
-    //     </div>
-    //     <Footer />
-    //   </div>
-    // </div>
+    <div className="app container">
+      <Header setCity={setCity} />
+      <Currentweather currentDetails={currentDetails} />
+      <Footer />
+    </div>
   );
 }

@@ -21,7 +21,7 @@ const WeatherClient = {
         pressure: response.data.main.pressure,
         description: response.data.weather[0].description,
         wind: Math.round(response.data.wind.speed),
-        icon: `${openweather_url}/img/wn/${wtimg}@2x.png`,
+        icon: `https://openweathermap.org/img/wn/${wtimg}@2x.png`,
         sun_rise: response.data.sys.sunrise * 1000,
         sun_set: response.data.sys.sunset * 1000,
       });
@@ -47,7 +47,7 @@ function extract_hourly_readings(data) {
     let icon = data.hourly[i].weather[0].icon;
     let reading = {
       hour: (i + currentHour) % 24,
-      image: `${openweather_url}/img/wn/${icon}@2x.png`,
+      image: `https://openweathermap.org/img/wn/${icon}@2x.png`,
       description: data.hourly[i].weather[0].description,
       temp: Math.round(data.hourly[i].temp),
     };

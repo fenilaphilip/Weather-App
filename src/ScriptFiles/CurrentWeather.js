@@ -2,15 +2,16 @@ import React from "react";
 import FormattedDate from "./Date";
 
 export default function Currentweather(properties) {
-  let weatherDetails = properties.currentWeatherDetails;
+  let weatherDetails = properties.currentDetails;
   function useImperial() {
     properties.changeUnit("imperial");
   }
   function useMetric() {
     properties.changeUnit("metric");
   }
-  return (
-    <div>
+
+  if (weatherDetails !== null) {
+    return (
       <div className="row ">
         <div className="col">
           <div className="card mainReport">
@@ -38,11 +39,11 @@ export default function Currentweather(properties) {
                         id="btn-celsius"
                         autoComplete="off"
                         checked
-                        onClick={useMetric}
+                        onChange={useMetric}
                       />
                       <label
                         className="btn btn-outline-primary"
-                        for="btn-celsius"
+                        htmlFor="btn-celsius"
                       >
                         °C
                       </label>
@@ -52,11 +53,11 @@ export default function Currentweather(properties) {
                         name="btnradio"
                         id="btn-fahrenheit"
                         autoComplete="off"
-                        onClick={useImperial}
+                        onChange={useImperial}
                       />
                       <label
                         className="btn btn-outline-primary"
-                        for="btn-fahrenheit"
+                        htmlFor="btn-fahrenheit"
                       >
                         °F
                       </label>
@@ -99,21 +100,21 @@ export default function Currentweather(properties) {
                     </div>
                     <div className="col-sm-3">
                       <h6 className="wtdetail">Sunrise</h6>
-                      <p className="wtmeasure">
+                      <div className="wtmeasure">
                         <FormattedDate
                           fulldate={false}
                           date={weatherDetails.sun_rise}
                         />
-                      </p>
+                      </div>
                     </div>
                     <div className="col-sm-2">
                       <h6 className="wtdetail">Sunset</h6>
-                      <p className="wtmeasure">
+                      <div className="wtmeasure">
                         <FormattedDate
                           fulldate={false}
                           date={weatherDetails.sun_set}
                         />
-                      </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -129,6 +130,8 @@ export default function Currentweather(properties) {
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return <p>Loading............!</p>;
+  }
 }
