@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Oneweekforecast() {
+export default function Weeklyforecast() {
   return (
     <div className="col-sm-6 mt-2 ">
       <div className="card pt-2 forecast">

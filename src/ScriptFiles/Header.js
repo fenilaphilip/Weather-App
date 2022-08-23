@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import WeatherClient from "./Api.js";
+import WeatherClient from "./WeatherClient.js";
 import locationIcon from "../images/location.png";
 
 export default function Header(properties) {

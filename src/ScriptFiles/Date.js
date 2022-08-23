@@ -14,7 +14,7 @@ export default function FormattedDate(props) {
   let months = [
     "January",
     "February",
-    " March",
+    "March",
     "April",
     "May",
     "June",
