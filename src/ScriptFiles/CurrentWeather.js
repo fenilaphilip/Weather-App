@@ -1,13 +1,16 @@
 import React from "react";
 import FormattedDate from "./Date";
+import Temperature from "./Temperature";
 
 export default function Currentweather(properties) {
   let weatherDetails = properties.currentDetails;
   function useImperial() {
-    properties.changeUnit("imperial");
+    console.log("Using imperial units");
+    properties.setUnit("imperial");
   }
   function useMetric() {
-    properties.changeUnit("metric");
+    console.log("Using metric units");
+    properties.setUnit("metric");
   }
 
   if (weatherDetails !== null) {
@@ -38,7 +41,7 @@ export default function Currentweather(properties) {
                         name="btnradio"
                         id="btn-celsius"
                         autoComplete="off"
-                        checked
+                        checked={properties.unit === "metric"}
                         onChange={useMetric}
                       />
                       <label
@@ -53,6 +56,7 @@ export default function Currentweather(properties) {
                         name="btnradio"
                         id="btn-fahrenheit"
                         autoComplete="off"
+                        checked={properties.unit === "imperial"}
                         onChange={useImperial}
                       />
                       <label
@@ -74,9 +78,15 @@ export default function Currentweather(properties) {
                   </div>
                   <div className="wtdetail">
                     Max / Min :
-                    <span className="wtmeasure">
-                      {weatherDetails.temp_max}°C /{weatherDetails.temp_min}°C
-                    </span>
+                    <Temperature
+                      value={weatherDetails.temp_max}
+                      unit={properties.unit}
+                    />
+                    /
+                    <Temperature
+                      value={weatherDetails.temp_min}
+                      unit={properties.unit}
+                    />
                   </div>
                 </div>
               </div>

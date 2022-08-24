@@ -30,7 +30,15 @@ export default function App() {
   return (
     <div className="app container">
       <Header setCity={setCity} />
-      <Currentweather currentDetails={currentDetails} />
+      <Currentweather
+        currentDetails={currentDetails}
+        unit={unit}
+        setUnit={setUnit}
+      />
+      <div className="row">
+        <Hourlyforecast />
+        <Weeklyforecast />
+      </div>
       <Footer />
     </div>
   );
