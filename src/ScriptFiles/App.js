@@ -10,23 +10,31 @@ import Footer from "./Footer.js";
 export default function App() {
   const [city, setCity] = useState("London");
   const [unit, setUnit] = useState("metric");
+  const [location, setLocation] = useState({ latitude: 51.5085, longitude: 0 });
   const [currentDetails, setCurrentDetails] = useState(null);
+  const [hourlyForecast, setHourlyForcast] = useState(null);
+  const [weeklyForecast, setWeeklyForcast] = useState(null);
 
   useEffect(() => {
     WeatherClient.getCurrentWeather(city, unit, (details) => {
       console.log(details);
       setCurrentDetails(details);
+      setLocation({ latitude: details.latitude, longitude: details.longitude });
     });
   }, [city, unit]);
+  useEffect(() => {
+    WeatherClient.getForecastWeather(
+      location.latitude,
+      location.longitude,
+      unit,
+      (forecast) => {
+        console.log(forecast);
+        setHourlyForcast(forecast.hourlyReadings);
+        setWeeklyForcast(forecast.weeklyReadings);
+      }
+    );
+  }, [location, unit]);
 
-  // WeatherClient.getForecastWeather(
-  //   52.517533,
-  //   13.386401,
-  //   "metric",
-  //   (forecast) => {
-  //     console.log(forecast);
-  //   }
-  // );
   return (
     <div className="app container">
       <Header setCity={setCity} />
@@ -36,8 +44,8 @@ export default function App() {
         setUnit={setUnit}
       />
       <div className="row">
-        <Hourlyforecast />
-        <Weeklyforecast />
+        <Hourlyforecast hourlyForecast={hourlyForecast} unit={unit} />
+        <Weeklyforecast weeklyForecast={weeklyForecast} unit={unit} />
       </div>
       <Footer />
     </div>

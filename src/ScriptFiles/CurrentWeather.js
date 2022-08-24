@@ -112,7 +112,7 @@ export default function Currentweather(properties) {
                       <h6 className="wtdetail">Sunrise</h6>
                       <div className="wtmeasure">
                         <FormattedDate
-                          fulldate={false}
+                          mode="time"
                           date={weatherDetails.sun_rise}
                         />
                       </div>
@@ -121,7 +121,7 @@ export default function Currentweather(properties) {
                       <h6 className="wtdetail">Sunset</h6>
                       <div className="wtmeasure">
                         <FormattedDate
-                          fulldate={false}
+                          mode="time"
                           date={weatherDetails.sun_set}
                         />
                       </div>
@@ -133,7 +133,7 @@ export default function Currentweather(properties) {
               <div className="row pt-2">
                 <small>Last updated</small>
                 <div className="day">
-                  <FormattedDate date={weatherDetails.date} fulldate={true} />
+                  <FormattedDate date={weatherDetails.date} mode="full" />
                 </div>
               </div>
             </div>

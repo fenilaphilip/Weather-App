@@ -24,6 +24,8 @@ const WeatherClient = {
         icon: `https://openweathermap.org/img/wn/${wtimg}@2x.png`,
         sun_rise: response.data.sys.sunrise * 1000,
         sun_set: response.data.sys.sunset * 1000,
+        longitude: response.data.coord.lon,
+        latitude: response.data.coord.lat,
       });
     });
   },
@@ -61,7 +63,8 @@ function extract_7days_readings(data) {
   for (let i = 0; i < 8; i++) {
     let icon = data.daily[i].weather[0].icon;
     let reading = {
-      image: `${openweather_url}/img/wn/${icon}@2x.png`,
+      date: new Date(data.daily[i].dt * 1000),
+      image: `https://openweathermap.org/img/wn/${icon}@2x.png`,
       description: data.daily[i].weather[0].description,
       tempMax: Math.round(data.daily[i].temp.max),
       tempMin: Math.round(data.daily[i].temp.min),

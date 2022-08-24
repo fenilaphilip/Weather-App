@@ -64,7 +64,7 @@ export default function FormattedDate(props) {
       time = `${hourIn12Format}:${minute} AM`;
     }
   }
-  if (props.fulldate) {
+  if (props.mode === "full") {
     return (
       <div>
         <p>
@@ -73,10 +73,16 @@ export default function FormattedDate(props) {
         </p>
       </div>
     );
-  } else {
+  } else if (props.mode === "time") {
     return (
       <div>
         <p>{time}</p>
+      </div>
+    );
+  } else if (props.mode === "day") {
+    return (
+      <div>
+        <p>{days[day]}</p>
       </div>
     );
   }
