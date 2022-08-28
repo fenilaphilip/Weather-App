@@ -14,6 +14,17 @@ export default function Header(properties) {
     event.preventDefault();
     setSearchInput(event.target.value);
   }
+  function handleLocation(event) {
+    event.preventDefault();
+    navigator.geolocation.getCurrentPosition(showLocation);
+  }
+  function showLocation(position) {
+    console.log("location accesed");
+    properties.setLocation({
+      latitude: position.coords.latitude,
+      longitude: position.coords.longitude,
+    });
+  }
 
   return (
     <nav className="navbar navbar-expand-lg">
@@ -24,6 +35,7 @@ export default function Header(properties) {
             <button
               className="btn btn-outline-success me-2"
               title="Current location"
+              onClick={handleLocation}
             >
               <img src={locationIcon} alt="location" id="location-img-btn" />
             </button>

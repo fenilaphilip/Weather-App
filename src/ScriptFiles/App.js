@@ -16,9 +16,19 @@ export default function App() {
   const [weeklyForecast, setWeeklyForcast] = useState(null);
 
   useEffect(() => {
-    WeatherClient.getCurrentWeather(city, unit, (details) => {
+    WeatherClient.getCurrentWeatherByLocation(
+      location.latitude,
+      location.longitude,
+      unit,
+      (details) => {
+        console.log(details);
+        setCurrentDetails(details);
+      }
+    );
+  }, [location, unit]);
+  useEffect(() => {
+    WeatherClient.getCurrentWeatherByCity(city, unit, (details) => {
       console.log(details);
-      setCurrentDetails(details);
       setLocation({ latitude: details.latitude, longitude: details.longitude });
     });
   }, [city, unit]);
@@ -37,7 +47,7 @@ export default function App() {
 
   return (
     <div className="app container">
-      <Header setCity={setCity} />
+      <Header setCity={setCity} setLocation={setLocation} />
       <Currentweather
         currentDetails={currentDetails}
         unit={unit}

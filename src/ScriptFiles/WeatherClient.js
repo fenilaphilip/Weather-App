@@ -6,27 +6,20 @@ const CurrentApi = `${openweather_url}/data/2.5/weather`;
 const OnecallApi = `${openweather_url}/data/2.5/onecall`;
 
 const WeatherClient = {
-  getCurrentWeather: (city, unit, updateWeatherDetails) => {
+  getCurrentWeatherByCity: (city, unit, updateWeatherDetails) => {
     const api_url = `${CurrentApi}?q=${city}&units=${unit}&appid=${api_key}`;
     axios.get(api_url).then((response) => {
       console.log(response);
-      let wtimg = response.data.weather[0].icon;
-      updateWeatherDetails({
-        city: response.data.name,
-        date: response.data.dt * 1000,
-        temperature: Math.round(response.data.main.temp),
-        temp_max: Math.round(response.data.main.temp_max),
-        temp_min: Math.round(response.data.main.temp_min),
-        humidity: response.data.main.humidity,
-        pressure: response.data.main.pressure,
-        description: response.data.weather[0].description,
-        wind: Math.round(response.data.wind.speed),
-        icon: `https://openweathermap.org/img/wn/${wtimg}@2x.png`,
-        sun_rise: response.data.sys.sunrise * 1000,
-        sun_set: response.data.sys.sunset * 1000,
-        longitude: response.data.coord.lon,
-        latitude: response.data.coord.lat,
-      });
+
+      updateWeatherDetails(parseCurrentWeather(response));
+    });
+  },
+  getCurrentWeatherByLocation: (lat, lon, unit, updateWeatherDetails) => {
+    const api_url = `${CurrentApi}?lat=${lat}&lon=${lon}&units=${unit}&appid=${api_key}`;
+    axios.get(api_url).then((response) => {
+      console.log(response);
+
+      updateWeatherDetails(parseCurrentWeather(response));
     });
   },
   getForecastWeather: (lat, lon, unit, updateWeatherForecast) => {
@@ -74,4 +67,23 @@ function extract_7days_readings(data) {
   return readings;
 }
 
+function parseCurrentWeather(response) {
+  let wtimg = response.data.weather[0].icon;
+  return {
+    city: response.data.name,
+    date: response.data.dt * 1000,
+    temperature: Math.round(response.data.main.temp),
+    temp_max: Math.round(response.data.main.temp_max),
+    temp_min: Math.round(response.data.main.temp_min),
+    humidity: response.data.main.humidity,
+    pressure: response.data.main.pressure,
+    description: response.data.weather[0].description,
+    wind: Math.round(response.data.wind.speed),
+    icon: `https://openweathermap.org/img/wn/${wtimg}@2x.png`,
+    sun_rise: response.data.sys.sunrise * 1000,
+    sun_set: response.data.sys.sunset * 1000,
+    longitude: response.data.coord.lon,
+    latitude: response.data.coord.lat,
+  };
+}
 export default WeatherClient;
