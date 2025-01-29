@@ -6,7 +6,7 @@ export default function Hourlyforecast(properties) {
     <div className="col-sm-6 mt-2">
       <div className="card pt-2 forecast">
         <h6>
-          <strong>24-hour weather forecast</strong>
+          <strong>Forecast in Detail</strong>
         </h6>
       </div>
       <div className="card forecast">

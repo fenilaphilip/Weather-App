@@ -7,7 +7,7 @@ export default function Weeklyforecast(properties) {
     <div className="col-sm-6 mt-2 ">
       <div className="card pt-2 forecast">
         <h6>
-          <strong>One-week weather forecast</strong>
+          <strong>Upcoming 5 days</strong>
         </h6>
       </div>
       <div className="card forecast">
