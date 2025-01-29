@@ -19,7 +19,6 @@ export default function Header(properties) {
     navigator.geolocation.getCurrentPosition(showLocation);
   }
   function showLocation(position) {
-    console.log("location accesed");
     properties.setLocation({
       latitude: position.coords.latitude,
       longitude: position.coords.longitude,

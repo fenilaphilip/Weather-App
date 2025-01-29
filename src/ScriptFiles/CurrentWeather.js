@@ -5,11 +5,9 @@ import Temperature from "./Temperature";
 export default function Currentweather(properties) {
   let weatherDetails = properties.currentDetails;
   function useImperial() {
-    console.log("Using imperial units");
     properties.setUnit("imperial");
   }
   function useMetric() {
-    console.log("Using metric units");
     properties.setUnit("metric");
   }
 

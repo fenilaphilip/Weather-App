@@ -21,14 +21,12 @@ export default function App() {
       location.longitude,
       unit,
       (details) => {
-        console.log(details);
         setCurrentDetails(details);
       }
     );
   }, [location, unit]);
   useEffect(() => {
     WeatherClient.getCurrentWeatherByCity(city, unit, (details) => {
-      console.log(details);
       setLocation({ latitude: details.latitude, longitude: details.longitude });
     });
   }, [city, unit]);

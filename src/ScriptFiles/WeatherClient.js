@@ -9,15 +9,12 @@ const WeatherClient = {
   getCurrentWeatherByCity: (city, unit, updateWeatherDetails) => {
     const api_url = `${CurrentApi}?q=${city}&units=${unit}&appid=${api_key}`;
     axios.get(api_url).then((response) => {
-      console.log(response);
-
       updateWeatherDetails(parseCurrentWeather(response));
     });
   },
   getCurrentWeatherByLocation: (lat, lon, unit, updateWeatherDetails) => {
     const api_url = `${CurrentApi}?lat=${lat}&lon=${lon}&units=${unit}&appid=${api_key}`;
     axios.get(api_url).then((response) => {
-      console.log(response);
 
       updateWeatherDetails(parseCurrentWeather(response));
     });
@@ -25,8 +22,6 @@ const WeatherClient = {
   getForecastWeather: (lat, lon, unit, updateWeatherForecast) => {
     const api_url = `${OnecallApi}?lat=${lat}&lon=${lon}&units=${unit}&appid=${api_key}`;
     axios.get(api_url).then((response) => {
-      console.log(response.data);
-
       updateWeatherForecast({
         weeklyReadings: extract_7days_readings(response.data),
         hourlyReadings: extract_hourly_readings(response.data),
