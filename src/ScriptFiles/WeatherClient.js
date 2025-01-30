@@ -26,8 +26,6 @@ const WeatherClient = {
         weeklyReadings: extract_5days_readings(response.data),
         hourlyReadings: extract_3hour_readings(response.data),
       }
-      console.log(response.data);
-      console.log(forecast);
       updateWeatherForecast(forecast);
     });
   },

@@ -6,7 +6,6 @@ export default function Header(properties) {
 
   function onSearchSubmit(event) {
     event.preventDefault();
-    console.log(`searching.............. ${searchInput}`);
     properties.setCity(searchInput);
   }
 
