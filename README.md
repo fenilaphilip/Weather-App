@@ -34,7 +34,7 @@ Make sure you have the following installed on your computer:
 **Cloning the Repository**
 
 ```bash
-git clone https://github.com/fenilaphilip/Weather-App
+git clone https://github.com/fenilaphilip/Weather-App.git
 cd Weather-App
 ```
 
